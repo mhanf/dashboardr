@@ -2,7 +2,8 @@
 #'
 #' @param id A module id
 #' @param df A dashboarder dataframe
-#'
+#' @importFrom plotly renderPlotly plot_ly
+#' @import shiny
 #' @return a dashboard
 #' @export
 

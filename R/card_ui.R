@@ -2,7 +2,7 @@
 #'
 #' @param title title of the card
 #' @param body shiny tag to encapsulate
-#'
+#' @importFrom shiny tags div
 #' @return A shiny tag encapsulated into a card
 #' @export
 

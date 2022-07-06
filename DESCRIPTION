@@ -2,16 +2,11 @@ Package: dashboardr
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R:
-    c(person(given = "Sesan",
-           family = "Sesan",
-           role = c("fnd"),
-           email = "contact@sesan.fr" ),
-           person(given = "Matthieu",
+    person(given = "Matthieu",
            family = "Hanf",
            role = c("aut", "cre"),
            email = "matthieu.hanf@sesan.fr",
            comment = c(ORCID = "0000-0001-7133-1323"))
-           )    
 Description: What the package does (one paragraph).
 License: GPL (>= 3)
 Encoding: UTF-8

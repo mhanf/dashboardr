@@ -1,4 +1,5 @@
 ui <- shiny::fluidPage(
   theme = theme,
-  "test"
+  # mod ui
+  mod_dashboardr_ui(id = "test", df = df)
 )

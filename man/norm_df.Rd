@@ -4,10 +4,12 @@
 \alias{norm_df}
 \title{Function to normalize a dashboardr dataframe}
 \usage{
-norm_df(df)
+norm_df(df, r)
 }
 \arguments{
 \item{df}{A dashboardr dataframe}
+
+\item{r}{r internal list (advanced use)}
 }
 \value{
 A normalized dashboardr dataframe

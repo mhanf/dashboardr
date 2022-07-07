@@ -3,6 +3,7 @@
 export(card_ui)
 export(mod_dashboardr_server)
 export(mod_dashboardr_ui)
+export(mod_graph_server)
 export(norm_df)
 export(test_df)
 import(shiny)

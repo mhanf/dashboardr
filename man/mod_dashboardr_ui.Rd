@@ -4,12 +4,14 @@
 \alias{mod_dashboardr_ui}
 \title{dashboardr ui part}
 \usage{
-mod_dashboardr_ui(id, df)
+mod_dashboardr_ui(id, df, r = NULL)
 }
 \arguments{
 \item{id}{module id}
 
 \item{df}{A dashboarder dataframe}
+
+\item{r}{r internal list (advanced use)}
 }
 \value{
 a dashboard

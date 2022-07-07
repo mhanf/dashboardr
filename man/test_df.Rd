@@ -4,10 +4,12 @@
 \alias{test_df}
 \title{Function to test the validity of a dashboardr dataframe}
 \usage{
-test_df(df)
+test_df(df, r)
 }
 \arguments{
 \item{df}{A dashboardr dataframe}
+
+\item{r}{r internal list (advanced use)}
 }
 \value{
 An error if the dashboardr dataframe is not valid

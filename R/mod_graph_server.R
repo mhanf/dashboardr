@@ -14,10 +14,12 @@ mod_graph_server <- function(id, df_graph, r = NULL) {
   moduleServer(id, function(input, output, session) {
     # session ns
     ns <- session$ns
-    # data extraction
-    data <- eval(parse(text = df_graph$data[1]))
     # graph compilation
     output$graph <- renderPlotly({
+      # data
+      data <- eval(parse(text = df_graph$data[1]))
+      print(data)
+      #graph
       plot_ly(
         data = data,
         type = "scatter",

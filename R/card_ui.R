@@ -1,7 +1,7 @@
 #' Function to encapsulate a shiny tag into a card
 #'
 #' @param title title of the card
-#' @param df_graph A graph dashboarder dataframe
+#' @param df_card A graph dashboarder dataframe
 #' @param r r internal list (advanced use)
 #' @param body shiny tag to encapsulate
 #'
@@ -11,7 +11,7 @@
 
 card_ui <- function(title,
                     body,
-                    df_graph,
+                    df_card,
                     r = NULL) {
   div(class = "col-4 m-0 p-1",
       tags$div(

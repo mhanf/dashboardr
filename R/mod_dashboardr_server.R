@@ -18,25 +18,26 @@ mod_dashboardr_server <- function(id, df, r = NULL) {
     df <- test_df(df = df, r = r)
     # normalize df
     df <- norm_df(df = df, r = r)
-    # dashboard compilation
-    lapply(
-      unique(df$row),
-      function(i){
-        # df row selection
-        df_row <- df[df$row == i,]
-        # row compilation
-        lapply(
-          unique(df_row$id),
-          function(j){
-            # df graph selection
-            df_graph <- df_row[df_row$id == j,]
-            # graph ui creation
-            mod_graph_server(
-              id = sprintf("r_%s_%s",i,j),
-              df_graph = df_graph,
-              r = r
-            )
-          })
+    # dashboard server
+    lapply(unique(df$row), function(i){
+      # df row selection
+      df_row <- df[df$row == i,]
+      # row compilation
+      row <- lapply(unique(df_row$card), function(j){
+        # df card selection
+        df_card <- df_row[df_row$card == j,]
+        # lapply df_card
+        card <- lapply(unique(df_card$id), function(k){
+          # df graph selection
+          df_graph <- df_card[df_card$id == k,]
+          # graph server creation
+          graph <- mod_graph_server(
+            id = sprintf("r_%s_%s_%s",i,j,k),
+            df_graph = df_graph,
+            r = r
+          )
+        })
       })
+    })
   })
 }

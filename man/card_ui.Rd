@@ -4,14 +4,14 @@
 \alias{card_ui}
 \title{Function to encapsulate a shiny tag into a card}
 \usage{
-card_ui(title, body, df_graph, r = NULL)
+card_ui(title, body, df_card, r = NULL)
 }
 \arguments{
 \item{title}{title of the card}
 
 \item{body}{shiny tag to encapsulate}
 
-\item{df_graph}{A graph dashboarder dataframe}
+\item{df_card}{A graph dashboarder dataframe}
 
 \item{r}{r internal list (advanced use)}
 }

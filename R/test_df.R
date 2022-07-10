@@ -10,10 +10,9 @@ test_df <- function(df, r = NULL, check_var) {
 
   # Test necessary var
   missing_var <- NULL
-
-  for (k in check_var) {
-    if (! k %in% colnames(df)) { missing_var <- c(missing_var, k) }
-  }
+  lapply(check_var, function(i){
+    if (! i %in% colnames(df)) { missing_var <- c(missing_var, i) }
+  })
   # error message for necessary var
   if (is.null(missing_var) == FALSE){
     label <- ifelse(
@@ -30,15 +29,16 @@ test_df <- function(df, r = NULL, check_var) {
   if (length(unicity) > 0) {
     stop(sprintf("Several types for id : %s", paste(unique(unicity), collapse = " & ")))
   }
-  # control NA in necessary var
-  if (TRUE %in% is.na(df$id)) {stop("NA not allowed in id variable")}
-  if (TRUE %in% is.na(df$type)) {stop("NA not allowed in type variable")}
-  if (TRUE %in% is.na(df$data)) {stop("NA not allowed in data variable")}
-
+  # control in check_var
+  lapply(check_var, function(i){
+    if (TRUE %in% is.na(df[,i])) {
+      stop(sprintf("NA not allowed in %s variable", i))
+      }
+  })
   # # control existing type
-  test1 <- df[, c("id", "type")]
-  test1$test <- test1$type %in% c("plot", "table")
-  test1 <- test1[test1$test == FALSE, ]
-  if (dim(test1)[1] > 0) {
-    stop(sprintf("Unvalid type %s", paste(unique(test1$type), collapse = " & ")))}
+  exist_type <- df[, c("id", "type")]
+  exist_type$exist <- exist_type$type %in% c("plot", "table")
+  exist_type <- exist_type[exist_type$exist == FALSE, ]
+  if (dim(exist_type)[1] > 0) {
+    stop(sprintf("Unvalid type %s", paste(unique(exist_type$type), collapse = " & ")))}
 }

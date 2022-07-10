@@ -38,7 +38,7 @@ test_df <- function(df, r = NULL, check_var) {
   # # control existing type
   exist_type <- df[, c("id", "type")]
   exist_type$exist <- exist_type$type %in% c("plot", "table")
-  exist_type <- exist_type[exist_type$exist == FALSE, ]
-  if (dim(exist_type)[1] > 0) {
+  exist_type <- exist_type$exist[exist_type$exist == FALSE]
+  if (length(exist_type) > 0) {
     stop(sprintf("Unvalid type %s", paste(unique(exist_type$type), collapse = " & ")))}
 }

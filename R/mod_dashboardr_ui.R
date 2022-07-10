@@ -38,7 +38,14 @@ mod_dashboardr_ui <- function(id, df, r = NULL) {
           r = r
         )
         # nav encapsulation
-        if (length(unique(df_card$id)) > 1){ graph <-nav(title = k, graph) }
+        if (length(unique(df_card$id)) > 1){
+          #graph <- nav(title = k, graph)
+          graph <- div(class = "tab-pane pt-1",
+              title = k,
+              'data-value' = k,
+              graph
+          )
+        }
         return(graph)
       })
       # navs_tab encapsulation

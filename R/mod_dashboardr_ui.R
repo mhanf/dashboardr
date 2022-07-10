@@ -14,7 +14,9 @@ mod_dashboardr_ui <- function(id, df, r = NULL) {
   # ns
   ns <- NS(id)
   # test df
-  df <- test_df(df = df, r = r)
+  test_df(df = df,
+          check_var = c("id", "type", "data")
+          )
   # normalize df
   df <- norm_df(df = df, r = r)
   # dashboard ui
@@ -52,9 +54,4 @@ mod_dashboardr_ui <- function(id, df, r = NULL) {
     # row encapsulation
     row <- div(class = "row m-0 p-0", row)
   })
-
-
 }
-
-
-

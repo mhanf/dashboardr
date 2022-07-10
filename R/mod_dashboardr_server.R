@@ -15,7 +15,9 @@ mod_dashboardr_server <- function(id, df, r = NULL) {
     # session ns
     ns <- session$ns
     # test df
-    df <- test_df(df = df, r = r)
+    test_df(df = df,
+            check_var = c("id", "type", "data")
+    )
     # normalize df
     df <- norm_df(df = df, r = r)
     # dashboard server

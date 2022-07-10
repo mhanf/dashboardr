@@ -2,18 +2,20 @@
 % Please edit documentation in R/test_df.R
 \name{test_df}
 \alias{test_df}
-\title{Function to test the validity of a dashboardr dataframe}
+\title{Test the conformity of necessary variables in dashboardr dataframe}
 \usage{
-test_df(df, r)
+test_df(df, r = NULL, check_var)
 }
 \arguments{
-\item{df}{A dashboardr dataframe}
+\item{df}{Dashboardr dataframe}
 
-\item{r}{r internal list (advanced use)}
+\item{r}{r internal value}
+
+\item{check_var}{Vector of variables to test}
 }
 \value{
-An error if the dashboardr dataframe is not valid
+several error messages (if any)
 }
 \description{
-Function to test the validity of a dashboardr dataframe
+Test the conformity of necessary variables in dashboardr dataframe
 }

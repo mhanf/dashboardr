@@ -13,12 +13,18 @@ card_ui <- function(title,
                     body,
                     df_card,
                     r = NULL) {
-  div(class = "col-4 m-0 p-1",
+  div(
+    class = "col-4 m-0 p-1",
+    tags$div(
+      class = "card text-center h-100 m-0",
       tags$div(
-        class = "card text-center h-100 m-0",
-        tags$div(class = "card-header primary-text fw-bold",
-                 title) ,
-        tags$div(class = "card-body p-1 m-0",
-                 body)
-      ))
+        class = "card-header primary-text fw-bold",
+        title
+      ),
+      tags$div(
+        class = "card-body p-1 m-0",
+        body
+      )
+    )
+  )
 }

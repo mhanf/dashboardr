@@ -7,11 +7,11 @@
 #' @import shiny
 #' @return a ui shiny tag for plotly graph
 
-mod_graph_ui <- function(id, df_graph, r = NULL){
+mod_graph_ui <- function(id, df_graph, r = NULL) {
   # ns
   ns <- NS(id)
 
-  if (df_graph$type[1] == "plot"){
+  if (df_graph$type[1] == "plot") {
     # graph
     tag <- plotlyOutput(
       outputId = ns("plot"),
@@ -20,19 +20,12 @@ mod_graph_ui <- function(id, df_graph, r = NULL){
       inline = FALSE,
       reportTheme = TRUE
     )
-  }
-  else if (df_graph$type[1] == "table"){
+  } else if (df_graph$type[1] == "table") {
     # table
-    tag <- DT::dataTableOutput(ns('table'))
+    tag <- DT::dataTableOutput(ns("table"))
   }
   # vertical center of the element in the card
   tag <- div(class = "d-flex align-items-center h-100 w-100", tag)
-
-  # tag <- tagList(
-  # tags$head(tags$style(HTML("table.dataTable tbody tr.active td {background: pink !important;}"))),
-  # tag
-  # )
-
   # return
   return(tag)
 }

@@ -6,9 +6,7 @@
 #' @return A normalized dashboardr dataframe
 #' @export
 
-norm_df <- function(df, r){
-
+norm_df <- function(df, r) {
   df <- df
   return(df)
-
 }

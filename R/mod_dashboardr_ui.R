@@ -15,37 +15,39 @@ mod_dashboardr_ui <- function(id, df, r = NULL) {
   # ns
   ns <- NS(id)
   # test df
-  test_df(df = df,
-          check_var = c("id", "type", "data")
-          )
+  test_df(
+    df = df,
+    check_var = c("id", "type", "data")
+  )
   # normalize df
   df <- norm_df(df = df, r = r)
   # dashboard ui
-  dashboard <- lapply(unique(df$row), function(i){
+  dashboard <- lapply(unique(df$row), function(i) {
     # df row selection
-    df_row <- df[df$row == i,]
+    df_row <- df[df$row == i, ]
     # row compilation
-    row <- lapply(unique(df_row$card), function(j){
+    row <- lapply(unique(df_row$card), function(j) {
       # df card selection
-      df_card <- df_row[df_row$card == j,]
+      df_card <- df_row[df_row$card == j, ]
       # lapply df_card
-      card <- lapply(unique(df_card$id), function(k){
+      card <- lapply(unique(df_card$id), function(k) {
         # df graph selection
-        df_graph <- df_card[df_card$id == k,]
+        df_graph <- df_card[df_card$id == k, ]
         # graph ui creation
         graph <- mod_graph_ui(
-          id = ns(sprintf("r_%s_%s_%s",i,j,k)),
+          id = ns(sprintf("r_%s_%s_%s", i, j, k)),
           df_graph = df_graph,
           r = r
         )
         # nav encapsulation
-        if (length(unique(df_card$id)) > 1){
+        if (length(unique(df_card$id)) > 1) {
           graph <- htmltools::tagQuery(
-            nav(title = k,
-                icon = shiny::icon("user"),
-                graph
-                )
-            )$
+            nav(
+              title = k,
+              icon = shiny::icon("user"),
+              graph
+            )
+          )$
             addClass("pt-1")$
             allTags()
         }
@@ -53,10 +55,12 @@ mod_dashboardr_ui <- function(id, df, r = NULL) {
         return(graph)
       })
       # navs_tab encapsulation
-      if (length(unique(df_card$id)) > 1){ card <- navs_tab(!!!card) }
+      if (length(unique(df_card$id)) > 1) {
+        card <- navs_tab(!!!card)
+      }
       # card encapsulation
       card <- card_ui(
-        title = paste("row_",i,"_card_",j),
+        title = paste("row_", i, "_card_", j),
         body = card,
         df_card = df_card,
         r = r
@@ -71,11 +75,10 @@ mod_dashboardr_ui <- function(id, df, r = NULL) {
     version = "0.0.1",
     package = "dashboardr",
     src = "assets",
-    stylesheet =  c(file = "table.css")
+    stylesheet = c(file = "table.css")
   )
   # add dependency
   dashboard <- tagList(table_dep, dashboard)
 
   return(dashboard)
-
 }

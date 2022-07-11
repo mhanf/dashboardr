@@ -18,3 +18,5 @@ Imports:
     htmltools,
     plotly,
     shiny
+Suggests: 
+    covr

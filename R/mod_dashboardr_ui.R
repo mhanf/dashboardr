@@ -6,6 +6,7 @@
 #'
 #' @importFrom plotly plotlyOutput
 #' @importFrom bslib navs_tab nav
+#' @importFrom htmltools tagQuery
 #' @import shiny
 #' @return a dashboard
 #' @export
@@ -39,13 +40,16 @@ mod_dashboardr_ui <- function(id, df, r = NULL) {
         )
         # nav encapsulation
         if (length(unique(df_card$id)) > 1){
-          #graph <- nav(title = k, graph)
-          graph <- div(class = "tab-pane pt-1",
-              title = k,
-              'data-value' = k,
-              graph
-          )
+          graph <- htmltools::tagQuery(
+            nav(title = k,
+                icon = shiny::icon("user"),
+                graph
+                )
+            )$
+            addClass("pt-1")$
+            allTags()
         }
+        # return
         return(graph)
       })
       # navs_tab encapsulation
@@ -61,4 +65,17 @@ mod_dashboardr_ui <- function(id, df, r = NULL) {
     # row encapsulation
     row <- div(class = "row m-0 p-0", row)
   })
+  # table css dependency
+  table_dep <- htmltools::htmlDependency(
+    name = "table",
+    version = "0.0.1",
+    package = "dashboardr",
+    src = "assets",
+    stylesheet =  c(file = "table.css")
+  )
+  # add dependency
+  dashboard <- tagList(table_dep, dashboard)
+
+  return(dashboard)
+
 }

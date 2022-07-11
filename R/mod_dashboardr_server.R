@@ -20,6 +20,8 @@ mod_dashboardr_server <- function(id, df, r = NULL) {
     )
     # normalize df
     df <- norm_df(df = df, r = r)
+    # extract bslib theme
+    theme_var <- extract_bslib_theme(session)
     # dashboard server
     lapply(unique(df$row), function(i){
       # df row selection
@@ -36,7 +38,8 @@ mod_dashboardr_server <- function(id, df, r = NULL) {
           graph <- mod_graph_server(
             id = sprintf("r_%s_%s_%s",i,j,k),
             df_graph = df_graph,
-            r = r
+            r = r,
+            theme_var = theme_var
           )
         })
       })

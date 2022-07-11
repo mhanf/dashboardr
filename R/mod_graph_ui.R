@@ -27,6 +27,12 @@ mod_graph_ui <- function(id, df_graph, r = NULL){
   }
   # vertical center of the element in the card
   tag <- div(class = "d-flex align-items-center h-100 w-100", tag)
+
+  # tag <- tagList(
+  # tags$head(tags$style(HTML("table.dataTable tbody tr.active td {background: pink !important;}"))),
+  # tag
+  # )
+
   # return
   return(tag)
 }

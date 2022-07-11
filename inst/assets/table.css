@@ -1,0 +1,5 @@
+
+/* table css */
+table.dataTable tbody tr.active td {
+    background: var(--bs-primary) !important;
+}

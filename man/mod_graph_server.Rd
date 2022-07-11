@@ -4,7 +4,7 @@
 \alias{mod_graph_server}
 \title{dashboardr Server part}
 \usage{
-mod_graph_server(id, df_graph, r = NULL)
+mod_graph_server(id, df_graph, r = NULL, theme_var)
 }
 \arguments{
 \item{id}{A module id}
@@ -12,6 +12,8 @@ mod_graph_server(id, df_graph, r = NULL)
 \item{df_graph}{A graph dashboarder dataframe}
 
 \item{r}{r internal list (advanced use)}
+
+\item{theme_var}{Shiny app theme list of interesting variables}
 }
 \value{
 a dashboard

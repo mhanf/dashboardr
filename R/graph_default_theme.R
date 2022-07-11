@@ -1,6 +1,3 @@
-
-
-
 #' apply a default plotly theme for graph
 #'
 #' @param graph a graph to which apply the default theme

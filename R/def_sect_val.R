@@ -36,7 +36,7 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
   # width default value
   sect_width <- ifelse(is.na(sect_width), 12, sect_width)
   match.arg(
-    arg = sect_width,
+    arg = as.character(sect_width),
     choices = as.character(c(1:12)),
     several.ok = FALSE
   )
@@ -46,7 +46,7 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
     sect_width_sm
   )
   match.arg(
-    arg = sect_width_sm,
+    arg = as.character(sect_width_sm),
     choices = as.character(c(1:12)),
     several.ok = FALSE
   )
@@ -56,7 +56,7 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
     sect_width_md
   )
   match.arg(
-    arg = sect_width_md,
+    arg = as.character(sect_width_md),
     choices = as.character(c(1:12)),
     several.ok = FALSE
   )
@@ -66,7 +66,7 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
     sect_width_lg
   )
   match.arg(
-    arg = sect_width_lg,
+    arg = as.character(sect_width_lg),
     choices = as.character(c(1:12)),
     several.ok = FALSE
   )
@@ -76,11 +76,11 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
     sect_width_xl
   )
   match.arg(
-    arg = sect_width_xl,
+    arg = as.character(sect_width_xl),
     choices = as.character(c(1:12)),
     several.ok = FALSE
   )
-  # title
+  title
   sect_title <- int_ext_fct(
     x = df_sect$sect_title[1],
     r = r,

@@ -7,32 +7,37 @@
 #' @return a list of card parameters
 
 def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
+  # bootstrap color
+  bs_color <- c(
+    "default", "primary", "secondary", "light", "dark", "info",
+    "danger", "warning", "success", "black", "white"
+  )
   # width section
   sect_width <- int_ext_fct(
     x = df_sect$sect_width[1],
     r = r,
     default_pattern = default_pattern
-    )
+  )
   sect_width_sm <- int_ext_fct(
     x = df_sect$sect_width_sm[1],
     r = r,
     default_pattern = default_pattern
-    )
+  )
   sect_width_md <- int_ext_fct(
     x = df_sect$sect_width_md[1],
     r = r,
     default_pattern = default_pattern
-    )
+  )
   sect_width_lg <- int_ext_fct(
     x = df_sect$sect_width_lg[1],
     r = r,
     default_pattern = default_pattern
-    )
+  )
   sect_width_xl <- int_ext_fct(
     x = df_sect$sect_width_xl[1],
     r = r,
     default_pattern = default_pattern
-    )
+  )
   # width default value
   sect_width <- ifelse(is.na(sect_width), 12, sect_width)
   match.arg(
@@ -84,19 +89,20 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
   sect_title <- int_ext_fct(
     x = df_sect$sect_title[1],
     r = r,
-    default_pattern = default_pattern)
+    default_pattern = default_pattern
+  )
   # footer
   sect_footer <- int_ext_fct(
     x = df_sect$sect_footer[1],
     r = r,
     default_pattern = default_pattern
-    )
+  )
   # title align
   sect_title_align <- int_ext_fct(
     x = df_sect$sect_title_align[1],
     r = r,
     default_pattern = default_pattern
-    )
+  )
   if (is.na(sect_title_align[1])) {
     sect_title_align <- "center"
   }
@@ -110,13 +116,55 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
     x = df_sect$sect_footer_align[1],
     r = r,
     default_pattern = default_pattern
-    )
+  )
   if (is.na(sect_footer_align[1])) {
     sect_footer_align <- "center"
   }
   match.arg(
     arg = sect_footer_align,
     choices = c("start", "center", "end"),
+    several.ok = FALSE
+  )
+  # title bgcolor
+  sect_title_bgcolor <- int_ext_fct(
+    x = df_sect$sect_title_bgcolor[1],
+    r = r,
+    default_pattern = default_pattern
+  )
+  if (is.na(sect_title_bgcolor[1])) {
+    sect_title_bgcolor <- "default"
+  }
+  match.arg(
+    arg = sect_title_bgcolor,
+    choices = bs_color,
+    several.ok = FALSE
+  )
+  # footer bgcolor
+  sect_footer_bgcolor <- int_ext_fct(
+    x = df_sect$sect_footer_bgcolor[1],
+    r = r,
+    default_pattern = default_pattern
+  )
+  if (is.na(sect_footer_bgcolor[1])) {
+    sect_footer_bgcolor <- "default"
+  }
+  match.arg(
+    arg = sect_footer_bgcolor,
+    choices = bs_color,
+    several.ok = FALSE
+  )
+  # border color
+  sect_border_color <- int_ext_fct(
+    x = df_sect$sect_border_color[1],
+    r = r,
+    default_pattern = default_pattern
+  )
+  if (is.na(sect_border_color[1])) {
+    sect_border_color <- "default"
+  }
+  match.arg(
+    arg = sect_border_color,
+    choices = bs_color,
     several.ok = FALSE
   )
   # final values
@@ -130,6 +178,9 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
   sect_val$sect_footer <- sect_footer
   sect_val$sect_title_align <- sect_title_align
   sect_val$sect_footer_align <- sect_footer_align
+  sect_val$sect_title_bgcolor <- sect_title_bgcolor
+  sect_val$sect_footer_bgcolor <- sect_footer_bgcolor
+  sect_val$sect_border_color <- sect_border_color
   # return
   return(sect_val)
 }

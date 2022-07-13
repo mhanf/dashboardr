@@ -19,6 +19,7 @@ norm_df <- function(df, r) {
     "sect_width", "sect_width_sm", "sect_width_md",
     "sect_width_lg", "sect_width_xl", "sect_title",
     "sect_footer", "sect_title_align", "sect_footer_align",
+    "sect_title_bgcolor", "sect_border_color", "sect_footer_bgcolor",
     # plot
     "x",
     "y"

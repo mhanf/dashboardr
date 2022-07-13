@@ -4,7 +4,7 @@
 #' @param r  r internal list (advanced use)
 #' @param df_graph A graph dashboarder dataframe
 #' @param theme_var Shiny app theme list of interesting variables
-#' @importFrom plotly renderPlotly plot_ly layout
+#' @importFrom plotly renderPlotly add_markers
 #' @import shiny
 #' @return a dashboard
 
@@ -17,15 +17,17 @@ mod_graph_server <- function(id, df_graph, r = NULL, theme_var) {
       output$plot <- renderPlotly({
         # data evaluation
         data <- eval(parse(text = df_graph$data[1]))
-        # graph construction
-        graph <- plot_ly(
+        # create default graph
+        graph <- create_graph(theme_var = theme_var)
+        # add traces to graph
+        graph <- plotly::add_lines(
+          graph,
           data = data,
           type = "scatter",
           x = data[, df_graph$x],
-          y = data[, df_graph$y]
+          y = data[, df_graph$y],
+          line = list(color = theme_var$primary, width = 2)
         )
-        # graph default theme
-        graph <- graph_default_theme(graph = graph, theme_var = theme_var)
         # graph return
         graph
       })

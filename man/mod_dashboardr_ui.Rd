@@ -4,7 +4,7 @@
 \alias{mod_dashboardr_ui}
 \title{dashboardr ui part}
 \usage{
-mod_dashboardr_ui(id, df, r = NULL)
+mod_dashboardr_ui(id, df, r = NULL, default_pattern = "^\%r\%")
 }
 \arguments{
 \item{id}{module id}
@@ -12,6 +12,8 @@ mod_dashboardr_ui(id, df, r = NULL)
 \item{df}{A dashboarder dataframe}
 
 \item{r}{r internal list (advanced use)}
+
+\item{default_pattern}{default pattern to identify r code in dashboardr dataframe}
 }
 \value{
 a dashboard

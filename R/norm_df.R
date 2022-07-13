@@ -13,8 +13,13 @@ norm_df <- function(df, r) {
   df$order <- 1:dim(df)[1]
   # Construction of complete dataframe
   all_var <- c(
-    "row",
-    "card",
+    # essential
+    "id","type","data","row","card",
+    # section
+    "sect_width", "sect_width_sm", "sect_width_md",
+    "sect_width_lg", "sect_width_xl", "sect_title",
+    "sect_footer", "sect_title_align", "sect_footer_align",
+    # plot
     "x",
     "y"
   )

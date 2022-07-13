@@ -24,7 +24,7 @@ mod_graph_ui <- function(id, df_graph, r = NULL) {
     # table
     tag <- DT::dataTableOutput(ns("table"))
   }
-  # vertical center of the element in the card
+  # vertical center of the element in the section
   tag <- div(class = "d-flex align-items-center h-100 w-100", tag)
   # return
   return(tag)

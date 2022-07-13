@@ -1,11 +1,13 @@
-#' apply a default plotly theme for graph
+#' create a default plotly graph
 #'
-#' @param graph a graph to which apply the default theme
 #' @param theme_var the list of bslib variables
+#' @importFrom plotly plot_ly layout config
 #'
-#' @return a graph with the default plotly theme applied
+#' @return a new default plotly graph
 
-graph_default_theme <- function(graph, theme_var) {
+create_graph <- function(theme_var) {
+  # graph creation
+  graph <- plotly::plot_ly()
   # default graph layout
   graph <- plotly::layout(
     graph,

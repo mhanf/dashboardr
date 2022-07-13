@@ -3,13 +3,14 @@
 #' @param id A module id
 #' @param r  r internal list (advanced use)
 #' @param df A dashboarder dataframe
+#' @param default_pattern default pattern to identify r code in dashboardr dataframe
 #'
 #' @importFrom plotly renderPlotly plot_ly
 #' @import shiny
 #' @return a dashboard
 #' @export
 
-mod_dashboardr_server <- function(id, df, r = NULL) {
+mod_dashboardr_server <- function(id, df, r = NULL, default_pattern = "^%r%") {
   moduleServer(id, function(input, output, session) {
     # session ns
     ns <- session$ns
@@ -27,13 +28,13 @@ mod_dashboardr_server <- function(id, df, r = NULL) {
       # df row selection
       df_row <- df[df$row == i, ]
       # row compilation
-      row <- lapply(unique(df_row$card), function(j) {
-        # df card selection
-        df_card <- df_row[df_row$card == j, ]
-        # lapply df_card
-        card <- lapply(unique(df_card$id), function(k) {
+      row <- lapply(unique(df_row$section), function(j) {
+        # df section selection
+        df_sect <- df_row[df_row$section == j, ]
+        # lapply df_sect
+        section <- lapply(unique(df_sect$id), function(k) {
           # df graph selection
-          df_graph <- df_card[df_card$id == k, ]
+          df_graph <- df_sect[df_sect$id == k, ]
           # graph server creation
           graph <- mod_graph_server(
             id = sprintf("r_%s_%s_%s", i, j, k),

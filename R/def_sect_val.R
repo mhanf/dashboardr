@@ -85,7 +85,7 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
     choices = as.character(c(1:12)),
     several.ok = FALSE
   )
-  title
+  # title
   sect_title <- int_ext_fct(
     x = df_sect$sect_title[1],
     r = r,
@@ -126,47 +126,88 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
     several.ok = FALSE
   )
   # title bgcolor
+  ## external compilation
   sect_title_bgcolor <- int_ext_fct(
     x = df_sect$sect_title_bgcolor[1],
     r = r,
     default_pattern = default_pattern
   )
+  ## default value
   if (is.na(sect_title_bgcolor[1])) {
     sect_title_bgcolor <- "default"
   }
+  ## tcheck validity
   match.arg(
     arg = sect_title_bgcolor,
     choices = bs_color,
     several.ok = FALSE
   )
+  ## add class type
+  sect_title_bgcolor <- ifelse(
+    sect_title_bgcolor == "default",
+    "",
+    sprintf("bg-%s", sect_title_bgcolor)
+  )
+
   # footer bgcolor
+  ## external compilation
   sect_footer_bgcolor <- int_ext_fct(
     x = df_sect$sect_footer_bgcolor[1],
     r = r,
     default_pattern = default_pattern
   )
+  ## default value
   if (is.na(sect_footer_bgcolor[1])) {
     sect_footer_bgcolor <- "default"
   }
+  ## tcheck validity
   match.arg(
     arg = sect_footer_bgcolor,
     choices = bs_color,
     several.ok = FALSE
   )
-  # border color
-  sect_border_color <- int_ext_fct(
-    x = df_sect$sect_border_color[1],
+  ## add class type
+  sect_footer_bgcolor <- ifelse(
+    sect_footer_bgcolor == "default",
+    "",
+    sprintf("bg-%s", sect_footer_bgcolor)
+  )
+
+  # tooltip message
+  sect_tlp_msg <- int_ext_fct(
+    x = df_sect$sect_tlp_msg[1],
     r = r,
     default_pattern = default_pattern
   )
-  if (is.na(sect_border_color[1])) {
-    sect_border_color <- "default"
+  # tooltip color
+  sect_tlp_color <- int_ext_fct(
+    x = df_sect$sect_tlp_color[1],
+    r = r,
+    default_pattern = default_pattern
+  )
+  if (is.na(sect_tlp_color[1])) {
+    sect_tlp_color <- "primary"
   }
   match.arg(
-    arg = sect_border_color,
+    arg = sect_tlp_color,
     choices = bs_color,
     several.ok = FALSE
   )
+  # tooltip position
+  sect_tlp_position <- int_ext_fct(
+    x = df_sect$sect_tlp_position[1],
+    r = r,
+    default_pattern = default_pattern
+  )
+  if (is.na(sect_tlp_position[1])) {
+    sect_tlp_position <- "top"
+  }
+  match.arg(
+    arg = sect_tlp_position,
+    choices = c("top", "bottom", "left", "right"),
+    several.ok = FALSE
+  )
+
   # final values
   sect_val <- list(NULL)
   sect_val$sect_width <- sect_width
@@ -180,7 +221,9 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
   sect_val$sect_footer_align <- sect_footer_align
   sect_val$sect_title_bgcolor <- sect_title_bgcolor
   sect_val$sect_footer_bgcolor <- sect_footer_bgcolor
-  sect_val$sect_border_color <- sect_border_color
+  sect_val$sect_tlp_msg <- sect_tlp_msg
+  sect_val$sect_tlp_color <- sect_tlp_color
+  sect_val$sect_tlp_position <- sect_tlp_position
   # return
   return(sect_val)
 }

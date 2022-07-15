@@ -47,17 +47,12 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
           r = r
         )
         # nav encapsulation
-        if (length(unique(df_sect$id)) > 1) {
-          graph <- htmltools::tagQuery(
-            nav(
-              title = k,
-              icon = shiny::icon("user"),
-              graph
-            )
-          )$
-            addClass("pt-1 align-items-center w-100 h-100")$
-            allTags()
-        }
+        graph <- nav_ui(
+          graph = graph,
+          df_sect = df_sect,
+          df_graph = df_graph,
+          r = r
+        )
         # return
         return(graph)
       })
@@ -71,20 +66,19 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
         sect_val = sect_val,
         r = r
       )
-      # col class definition
-      col_class <- sprintf(
-        fmt = "m-0 p-1 col-%s col-sm-%s col-md-%s col-lg-%s col-xl-%s",
-        sect_val$sect_width,
-        sect_val$sect_width_sm,
-        sect_val$sect_width_md,
-        sect_val$sect_width_lg,
-        sect_val$sect_width_xl
-      )
       # col encapsulation
-      div(class = col_class, section)
+      section <- col_ui(
+        section = section,
+        sect_val = sect_val,
+        r = r
+      )
+      # return
+      return(section)
     })
     # row encapsulation
     row <- div(class = "row m-0 p-0", row)
+    # return
+    return(row)
   })
   # table css dependency
   table_dep <- htmltools::htmlDependency(
@@ -96,6 +90,6 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
   )
   # add dependency
   dashboard <- tagList(table_dep, dashboard)
-
+  # return
   return(dashboard)
 }

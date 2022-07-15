@@ -7,7 +7,6 @@
 #' @return several error messages (if any)
 
 test_df <- function(df, r = NULL, check_var) {
-
   # Test necessary var
   missing_var <- NULL
   lapply(check_var, function(i) {

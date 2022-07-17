@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_sect_val.R
 \name{def_sect_val}
 \alias{def_sect_val}
-\title{Define list of card parameters}
+\title{Define list of section parameters}
 \usage{
 def_sect_val(df_sect, r = NULL, default_pattern = "^\%r\%")
 }
@@ -14,8 +14,8 @@ def_sect_val(df_sect, r = NULL, default_pattern = "^\%r\%")
 \item{default_pattern}{default pattern to evaluate}
 }
 \value{
-a list of card parameters
+a list of section parameters
 }
 \description{
-Define list of card parameters
+Define list of section parameters
 }

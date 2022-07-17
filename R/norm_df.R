@@ -14,13 +14,15 @@ norm_df <- function(df, r) {
   # Construction of complete dataframe
   all_var <- c(
     # essential
-    "id", "type", "data", "row", "card",
+    "id", "type", "data", "row", "section",
     # section
     "sect_width", "sect_width_sm", "sect_width_md",
     "sect_width_lg", "sect_width_xl", "sect_title",
     "sect_footer", "sect_title_align", "sect_footer_align",
-    "sect_title_bgcolor", "sect_footer_bgcolor",
+    "sect_title_color", "sect_title_bgcolor", "sect_footer_bgcolor",
     "sect_tlp_msg", "sect_tlp_color", "sect_tlp_position",
+    # nav
+    "nav_title", "nav_icon_name", "nav_icon_lib",
     # plot
     "x",
     "y"
@@ -32,7 +34,7 @@ norm_df <- function(df, r) {
     default_df[, k] <- NA
   }
   default_df$row <- 1:dim(default_df)[1]
-  default_df$card <- 1
+  default_df$section <- 1
   # keep absent columns
   var_keep <- c("id", all_var[!all_var %in% colnames(df)])
   # merging

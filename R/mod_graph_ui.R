@@ -16,16 +16,24 @@ mod_graph_ui <- function(id, df_graph, r = NULL) {
     tag <- plotlyOutput(
       outputId = ns("plot"),
       width = "100%",
-      height = "400px",
+      # height = "400px",
       inline = FALSE,
       reportTheme = TRUE
     )
   } else if (df_graph$type[1] == "table") {
     # table
     tag <- DT::dataTableOutput(ns("table"))
+    # table css dependency
+    table_dep <- htmltools::htmlDependency(
+      name = "table",
+      version = "0.0.1",
+      package = "dashboardr",
+      src = "assets",
+      stylesheet = c(file = "table.css")
+    )
+    # add dependency
+    tag <- tagList(table_dep, tag)
   }
-  # vertical center of the element in the section
-  tag <- div(class = "d-flex align-items-center h-100 w-100", tag)
   # return
   return(tag)
 }

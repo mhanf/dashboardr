@@ -29,7 +29,8 @@ card_ui <- function(body,
   if (!is.na(sect_title[1])) {
     sect_title <- tags$div(
       class = sprintf(
-        "card-header fw-bold %s",
+        "card-header fw-bold %s %s",
+        sect_val$sect_title_color,
         sect_val$sect_title_bgcolor
       ),
       sect_title

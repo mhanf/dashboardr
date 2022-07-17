@@ -46,12 +46,18 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
           df_graph = df_graph,
           r = r
         )
+        # vertical center of the element in the section
+        graph <- div(
+          class = "d-flex align-items-center h-100 w-100",
+          graph
+        )
         # nav encapsulation
         graph <- nav_ui(
           graph = graph,
           df_sect = df_sect,
           df_graph = df_graph,
-          r = r
+          r = r,
+          default_pattern = default_pattern
         )
         # return
         return(graph)
@@ -80,16 +86,6 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
     # return
     return(row)
   })
-  # table css dependency
-  table_dep <- htmltools::htmlDependency(
-    name = "table",
-    version = "0.0.1",
-    package = "dashboardr",
-    src = "assets",
-    stylesheet = c(file = "table.css")
-  )
-  # add dependency
-  dashboard <- tagList(table_dep, dashboard)
   # return
   return(dashboard)
 }

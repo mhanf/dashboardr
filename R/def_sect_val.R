@@ -1,10 +1,10 @@
-#' Define list of card parameters
+#' Define list of section parameters
 #'
 #' @param df_sect section dasboardr dataframe
 #' @param r internal r list
 #' @param default_pattern default pattern to evaluate
 #'
-#' @return a list of card parameters
+#' @return a list of section parameters
 
 def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
   # bootstrap color
@@ -125,6 +125,30 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
     choices = c("start", "center", "end"),
     several.ok = FALSE
   )
+  # title color
+  ## external compilation
+  sect_title_color <- int_ext_fct(
+    x = df_sect$sect_title_color[1],
+    r = r,
+    default_pattern = default_pattern
+  )
+  ## default value
+  if (is.na(sect_title_color[1])) {
+    sect_title_color <- "default"
+  }
+  ## tcheck validity
+  match.arg(
+    arg = sect_title_color,
+    choices = bs_color,
+    several.ok = FALSE
+  )
+  ## add class type
+  sect_title_color <- ifelse(
+    sect_title_color == "default",
+    "",
+    sprintf("text-%s", sect_title_color)
+  )
+
   # title bgcolor
   ## external compilation
   sect_title_bgcolor <- int_ext_fct(
@@ -219,6 +243,7 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
   sect_val$sect_footer <- sect_footer
   sect_val$sect_title_align <- sect_title_align
   sect_val$sect_footer_align <- sect_footer_align
+  sect_val$sect_title_color <- sect_title_color
   sect_val$sect_title_bgcolor <- sect_title_bgcolor
   sect_val$sect_footer_bgcolor <- sect_footer_bgcolor
   sect_val$sect_tlp_msg <- sect_tlp_msg

@@ -4,7 +4,7 @@
 \alias{nav_ui}
 \title{shiny tag encapsulation into a nav}
 \usage{
-nav_ui(graph, df_sect, df_graph, r)
+nav_ui(graph, df_sect, df_graph, r, default_pattern)
 }
 \arguments{
 \item{graph}{a graph to encapsulate}
@@ -14,6 +14,8 @@ nav_ui(graph, df_sect, df_graph, r)
 \item{df_graph}{A graph dashboarder dataframe}
 
 \item{r}{r internal list (advanced use)}
+
+\item{default_pattern}{default pattern to evaluate}
 }
 \value{
 shiny tag encapsulated into a nav

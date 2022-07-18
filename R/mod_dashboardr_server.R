@@ -6,12 +6,12 @@
 #' @param default_pattern default pattern to identify r code in dashboardr dataframe
 #'
 #' @importFrom plotly renderPlotly plot_ly
-#' @import shiny
+#' @importFrom shiny moduleServer
 #' @return a dashboard
 #' @export
 
 mod_dashboardr_server <- function(id, df, r = NULL, default_pattern = "^%r%") {
-  moduleServer(id, function(input, output, session) {
+  shiny::moduleServer(id, function(input, output, session) {
     # session ns
     ns <- session$ns
     # test df

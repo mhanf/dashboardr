@@ -3,8 +3,8 @@
 #'
 #' @param df_sect df_sect object
 #'
-#' @import htmltools
-#' @import shiny
+#' @importFrom htmltools htmlDependency
+#' @importFrom  shiny icon tagList tagAppendAttributes
 #' @return a html icon with tooltip
 #' @export
 
@@ -21,7 +21,7 @@ add_tooltip <- function(df_sect) {
   # placement
   placement <- df_sect$sect_tlp_position
   # tooltip
-  tooltip <- tagAppendAttributes(
+  tooltip <- shiny::tagAppendAttributes(
     el,
     title = HTML(as.character(title)),
     `data-bs-placement` = placement,
@@ -42,7 +42,7 @@ add_tooltip <- function(df_sect) {
     stylesheet = c(file = "tooltip.css")
   )
   # attach dependence
-  tooltip <- tagList(tooltip_dep, tooltip)
+  tooltip <- shiny::tagList(tooltip_dep, tooltip)
   # return
   return(tooltip)
 }

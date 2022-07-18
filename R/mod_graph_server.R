@@ -4,17 +4,18 @@
 #' @param r  r internal list (advanced use)
 #' @param df_graph A graph dashboarder dataframe
 #' @param theme_var Shiny app theme list of interesting variables
+#'
+#' @importFrom shiny moduleServer
 #' @importFrom plotly renderPlotly add_markers
-#' @import shiny
 #' @return a dashboard
 
 mod_graph_server <- function(id, df_graph, r = NULL, theme_var) {
-  moduleServer(id, function(input, output, session) {
+  shiny::moduleServer(id, function(input, output, session) {
     # session ns
     ns <- session$ns
     # graph compilation
     if (df_graph$type[1] == "plot") {
-      output$plot <- renderPlotly({
+      output$plot <- plotly::renderPlotly({
         # data evaluation
         data <- eval(parse(text = df_graph$data[1]))
         # create default graph

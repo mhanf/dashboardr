@@ -6,16 +6,16 @@
 #' @importFrom plotly plotlyOutput
 #' @importFrom DT dataTableOutput
 #' @importFrom htmltools htmlDependency
-#' @import shiny
+#' @importFrom shiny NS tagList
 #' @return a ui shiny tag for plotly graph
 
 mod_graph_ui <- function(id, df_graph, r = NULL) {
   # ns
-  ns <- NS(id)
+  ns <- shiny::NS(id)
 
   if (df_graph$type[1] == "plot") {
     # graph
-    tag <- plotlyOutput(
+    tag <- plotly::plotlyOutput(
       outputId = ns("plot"),
       width = "100%",
       # height = "400px",

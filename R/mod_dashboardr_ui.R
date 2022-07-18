@@ -6,7 +6,7 @@
 #' @param default_pattern default pattern to identify r code in dashboardr dataframe
 #'
 #' @importFrom bslib navs_tab
-#' @import shiny
+#' @importFrom shiny div
 #' @return a dashboard
 #' @export
 

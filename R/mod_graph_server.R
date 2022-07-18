@@ -43,7 +43,7 @@ mod_graph_server <- function(id, df_graph, r = NULL, theme_var) {
           scrollX = TRUE,
           buttons = c("excel"),
           language = list(
-            paginate = list(previous = "Pr\u00e9c\u00e9dent", `next` = "Suivant"),
+            paginate = list(previous = "<", `next` = ">"),
             search = "Recherche : "
           ),
           dom = "Btp",
@@ -56,6 +56,10 @@ mod_graph_server <- function(id, df_graph, r = NULL, theme_var) {
           pageLength = 5
         )
       )
+    } else if (df_graph$type[1] == "module") {
+      if (!is.na(df_graph$mod_server)) {
+        eval(parse(text = df_graph$mod_server))
+      }
     }
   })
 }

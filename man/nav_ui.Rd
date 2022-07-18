@@ -9,9 +9,9 @@ nav_ui(graph, df_sect, df_graph, r, default_pattern)
 \arguments{
 \item{graph}{a graph to encapsulate}
 
-\item{df_sect}{A section dashboarder dataframe}
+\item{df_sect}{A section dashboardr dataframe}
 
-\item{df_graph}{A graph dashboarder dataframe}
+\item{df_graph}{A graph dashboardr dataframe}
 
 \item{r}{r internal list (advanced use)}
 

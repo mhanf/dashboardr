@@ -23,6 +23,8 @@ norm_df <- function(df, r) {
     "sect_tlp_msg", "sect_tlp_color", "sect_tlp_position",
     # nav
     "nav_title", "nav_icon_name", "nav_icon_lib",
+    # module
+    "mod_ui", "mod_server",
     # plot
     "x",
     "y"

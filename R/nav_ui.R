@@ -1,12 +1,13 @@
 #' shiny tag encapsulation into a nav
 #'
 #' @param graph a graph to encapsulate
-#' @param df_sect A section dashboarder dataframe
-#' @param df_graph A graph dashboarder dataframe
+#' @param df_sect A section dashboardr dataframe
+#' @param df_graph A graph dashboardr dataframe
 #' @param r r internal list (advanced use)
 #' @param default_pattern default pattern to evaluate
 #'
 #' @importFrom htmltools tagQuery
+#' @importFrom bslib nav
 #' @return shiny tag encapsulated into a nav
 
 nav_ui <- function(graph, df_sect, df_graph, r, default_pattern) {
@@ -19,7 +20,7 @@ nav_ui <- function(graph, df_sect, df_graph, r, default_pattern) {
     )
     # nav encapsulation
     graph <- htmltools::tagQuery(
-      nav(
+      bslib::nav(
         title = nav_val$nav_title,
         icon = icon(
           name = nav_val$nav_icon_name,

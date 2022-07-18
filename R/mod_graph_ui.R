@@ -4,6 +4,8 @@
 #' @param df_graph A dashboarder graph dataframe
 #' @param r r internal list (advanced use)
 #' @importFrom plotly plotlyOutput
+#' @importFrom DT dataTableOutput
+#' @importFrom htmltools htmlDependency
 #' @import shiny
 #' @return a ui shiny tag for plotly graph
 
@@ -33,6 +35,16 @@ mod_graph_ui <- function(id, df_graph, r = NULL) {
     )
     # add dependency
     tag <- tagList(table_dep, tag)
+  } else if (df_graph$type[1] == "module") {
+    # module
+    if (is.na(df_graph$mod_ui[1])) {
+      stop("mod_ui must be specified")
+    } else {
+      tag <- div(
+        class = "w-100",
+        eval(parse(text = as.character(df_graph$mod_ui[1])))
+      )
+    }
   }
   # return
   return(tag)

@@ -5,9 +5,7 @@
 #' @param df A dashboarder dataframe
 #' @param default_pattern default pattern to identify r code in dashboardr dataframe
 #'
-#' @importFrom plotly plotlyOutput
-#' @importFrom bslib navs_tab nav
-#' @importFrom htmltools tagQuery
+#' @importFrom bslib navs_tab
 #' @import shiny
 #' @return a dashboard
 #' @export
@@ -64,7 +62,7 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
       })
       # navs_tab encapsulation
       if (length(unique(df_sect$id)) > 1) {
-        section <- navs_tab(!!!section)
+        section <- bslib::navs_tab(!!!section)
       }
       # card encapsulation
       section <- card_ui(

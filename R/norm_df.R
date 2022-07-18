@@ -15,6 +15,10 @@ norm_df <- function(df, r) {
   all_var <- c(
     # essential
     "id", "type", "data", "row", "section",
+    # row
+    "row_title",
+    "row_title_align",
+    "row_title_color",
     # section
     "sect_width", "sect_width_sm", "sect_width_md",
     "sect_width_lg", "sect_width_xl", "sect_title",

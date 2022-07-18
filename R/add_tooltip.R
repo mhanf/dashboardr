@@ -4,7 +4,7 @@
 #' @param df_sect df_sect object
 #'
 #' @importFrom htmltools htmlDependency
-#' @importFrom  shiny icon tagList tagAppendAttributes
+#' @importFrom  shiny icon tagList tagAppendAttributes HTML
 #' @return a html icon with tooltip
 #' @export
 
@@ -23,7 +23,7 @@ add_tooltip <- function(df_sect) {
   # tooltip
   tooltip <- shiny::tagAppendAttributes(
     el,
-    title = HTML(as.character(title)),
+    title = shiny::HTML(as.character(title)),
     `data-bs-placement` = placement,
     `data-bs-toggle` = "tooltip",
     `data-bs-html` = "true",

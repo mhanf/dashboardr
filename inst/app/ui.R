@@ -1,5 +1,6 @@
 ui <- shiny::bootstrapPage(
   theme = theme,
+  #waiter::autoWaiter(),
   actionButton("click", "Click"),
   div(
     class = "row justify-content-center",

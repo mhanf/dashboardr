@@ -80,7 +80,15 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
       return(section)
     })
     # row encapsulation
-    row <- div(class = "row m-0 p-0", row)
+    row <- row_ui(
+      row = row,
+      df_row = df_row,
+      r = r,
+      default_pattern = default_pattern
+    )
+    # row <- tagList(h3("Test",class="text-secondary m-0 p-0 mt-4 ms-1"),row)
+    # # row encapsulation
+    # row <- div(class = "row m-0 p-0", row)
     # return
     return(row)
   })

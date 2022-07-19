@@ -36,11 +36,12 @@ mod_dashboardr_server <- function(id, df, r = NULL, default_pattern = "^%r%") {
           # df graph selection
           df_graph <- df_sect[df_sect$id == k, ]
           # graph server creation
-          graph <- mod_graph_server(
+          graph <- mod_el_server(
             id = sprintf("r_%s_%s_%s", i, j, k),
             df_graph = df_graph,
             r = r,
-            theme_var = theme_var
+            theme_var = theme_var,
+            default_pattern = default_pattern
           )
         })
       })

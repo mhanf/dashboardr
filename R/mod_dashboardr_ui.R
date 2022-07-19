@@ -39,10 +39,11 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
         # df graph selection
         df_graph <- df_sect[df_sect$id == k, ]
         # graph ui creation
-        graph <- mod_graph_ui(
+        graph <- mod_el_ui(
           id = ns(sprintf("r_%s_%s_%s", i, j, k)),
           df_graph = df_graph,
-          r = r
+          r = r,
+          default_pattern = default_pattern
         )
         # vertical center of the element in the section
         graph <- div(
@@ -86,9 +87,6 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
       r = r,
       default_pattern = default_pattern
     )
-    # row <- tagList(h3("Test",class="text-secondary m-0 p-0 mt-4 ms-1"),row)
-    # # row encapsulation
-    # row <- div(class = "row m-0 p-0", row)
     # return
     return(row)
   })

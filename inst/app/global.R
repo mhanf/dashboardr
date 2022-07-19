@@ -10,7 +10,7 @@ df <- read_excel("www/data_dashboardr.xlsx")
 # theme
 theme <- bslib::bs_theme(
   version = 5,
-  bootswatch = "pulse"
+  bootswatch = "cerulean",
 )
 
 # example module part ui

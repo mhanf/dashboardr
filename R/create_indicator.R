@@ -1,11 +1,11 @@
-#' create a default plotly graph
+#' create a default indicator plotly graph
 #'
 #' @param theme_var the list of bslib variables
-#' @importFrom plotly plot_ly layout config add_trace
+#' @importFrom plotly plot_ly layout config
 #'
-#' @return a new default plotly graph
+#' @return a new default indicator plotly graph
 
-create_graph <- function(theme_var) {
+create_indicator <- function(theme_var) {
   # graph creation
   graph <- plotly::plot_ly()
   # default graph layout
@@ -19,20 +19,8 @@ create_graph <- function(theme_var) {
       color = theme_var$`body-color`,
       activecolor = theme_var$primary
     ),
-    # xaxis
-    xaxis = list(
-      tickfont = list(color = theme_var$`body-color`),
-      title = list(color = theme_var$`body-color`),
-      zerolinecolor = theme_var$`body-color`,
-      zerolinewidth = 2,
-      gridcolor = theme_var$light
-    ),
-    # yaxis
-    yaxis = list(
-      tickfont = list(color = theme_var$`body-color`),
-      title = list(color = theme_var$`body-color`),
-      gridcolor = theme_var$light
-    ),
+    # margin
+    margin = list(l = 25, r = 30, t = 20, b = 5),
     # personalized font
     font = list(family = theme_var$`font-family-base`)
   )

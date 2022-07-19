@@ -27,6 +27,15 @@ norm_df <- function(df, r) {
     "sect_tlp_msg", "sect_tlp_color", "sect_tlp_position",
     # nav
     "nav_title", "nav_icon_name", "nav_icon_lib",
+    # el
+    "el_height",
+    # indicator
+    "indic_value", "indic_value_color", "indic_value_prefix",
+    "indic_value_suffix", "indic_ref", "indic_ref_relative",
+    "indic_ref_invcolor", "indic_ref_format", "indic_ref_pos",
+    "indic_gauge_color", "indic_gauge_min", "indic_gauge_max",
+    "indic_gauge_step_val", "indic_gauge_step_color",
+    "indic_gauge_prefix", "indic_gauge_suffix",
     # module
     "mod_ui", "mod_server",
     # plot

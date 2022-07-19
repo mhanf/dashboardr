@@ -2,29 +2,41 @@
 #'
 #' @param id plot id
 #' @param df_graph A dashboarder graph dataframe
+#' @param default_pattern default_pattern = default_pattern
 #' @param r r internal list (advanced use)
+#'
 #' @importFrom plotly plotlyOutput
 #' @importFrom DT dataTableOutput
 #' @importFrom htmltools htmlDependency
 #' @importFrom shiny NS tagList
 #' @return a ui shiny tag for plotly graph
 
-mod_graph_ui <- function(id, df_graph, r = NULL) {
+mod_el_ui <- function(id, df_graph, r = NULL, default_pattern = "^%r%") {
   # ns
   ns <- shiny::NS(id)
+
+  # element parameters
+  el_val <- def_el_val(
+    df_graph = df_graph,
+    r = r,
+    default_pattern = default_pattern
+  )
 
   if (df_graph$type[1] == "plot") {
     # graph
     tag <- plotly::plotlyOutput(
       outputId = ns("plot"),
       width = "100%",
-      # height = "400px",
+      height = el_val$el_height,
       inline = FALSE,
       reportTheme = TRUE
     )
   } else if (df_graph$type[1] == "table") {
     # table
-    tag <- DT::dataTableOutput(ns("table"))
+    tag <- DT::dataTableOutput(ns("table"),
+      width = "100%",
+      height = el_val$el_height
+    )
     # table css dependency
     table_dep <- htmltools::htmlDependency(
       name = "table",
@@ -45,6 +57,16 @@ mod_graph_ui <- function(id, df_graph, r = NULL) {
         eval(parse(text = as.character(df_graph$mod_ui[1])))
       )
     }
+  }
+  # indicator
+  else if (df_graph$type[1] == "indicator") {
+    tag <- plotly::plotlyOutput(
+      outputId = ns("indicator"),
+      width = "100%",
+      height = el_val$el_height,
+      inline = FALSE,
+      reportTheme = TRUE
+    )
   }
   # return
   return(tag)

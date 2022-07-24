@@ -90,6 +90,19 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
     # return
     return(row)
   })
+
+  # tooltip dependence
+  tooltip_dep <- htmltools::htmlDependency(
+    name = "tooltip",
+    version = "0.0.1",
+    package = "dashboardr",
+    src = "assets",
+    script = "tooltip.js",
+    stylesheet = c(file = "tooltip.css")
+  )
+
+  dashboard <- shiny::tagList(tooltip_dep, dashboard)
+
   # return
   return(dashboard)
 }

@@ -2,20 +2,19 @@
 #' Add tooltip to section title
 #'
 #' @param df_sect df_sect object
+#' @param el element for which to add a tooltip
 #'
 #' @importFrom htmltools htmlDependency
 #' @importFrom  shiny icon tagList tagAppendAttributes HTML
 #' @return a html icon with tooltip
 #' @export
 
-add_tooltip <- function(df_sect) {
+add_tooltip <- function(df_sect, el = shiny::icon("question-circle")) {
   # special case of black and white
   tlp_color_css <- ifelse(df_sect$sect_tlp_color == "black" | df_sect$sect_tlp_color == "white",
     df_sect$sect_tlp_color,
     sprintf("var(--bs-%s)", df_sect$sect_tlp_color)
   )
-  # icon
-  el <- shiny::icon("question-circle")
   # message
   title <- df_sect$sect_tlp_msg
   # placement
@@ -32,17 +31,6 @@ add_tooltip <- function(df_sect) {
     tabindex = "0",
     `data-bs-custom-class` = sprintf("tooltip-%s", df_sect$sect_tlp_color)
   )
-  # tooltip dependence
-  tooltip_dep <- htmltools::htmlDependency(
-    name = "tooltip",
-    version = "0.0.1",
-    package = "dashboardr",
-    src = "assets",
-    script = "tooltip.js",
-    stylesheet = c(file = "tooltip.css")
-  )
-  # attach dependence
-  tooltip <- shiny::tagList(tooltip_dep, tooltip)
   # return
   return(tooltip)
 }

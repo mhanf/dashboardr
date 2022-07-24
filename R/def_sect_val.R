@@ -13,6 +13,13 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
     "danger", "warning", "success", "black", "white"
   )
   # width section
+  type <- int_ext_fct(
+    x = df_sect$type[1],
+    r = r,
+    default_pattern = default_pattern
+  )
+
+  # width section
   sect_width <- int_ext_fct(
     x = df_sect$sect_width[1],
     r = r,
@@ -234,6 +241,7 @@ def_sect_val <- function(df_sect, r = NULL, default_pattern = "^%r%") {
 
   # final values
   sect_val <- list(NULL)
+  sect_val$type <- type
   sect_val$sect_width <- sect_width
   sect_val$sect_width_sm <- sect_width_sm
   sect_val$sect_width_md <- sect_width_md

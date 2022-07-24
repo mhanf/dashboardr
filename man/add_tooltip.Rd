@@ -4,10 +4,12 @@
 \alias{add_tooltip}
 \title{Add tooltip to section title}
 \usage{
-add_tooltip(df_sect)
+add_tooltip(df_sect, el = shiny::icon("question-circle"))
 }
 \arguments{
 \item{df_sect}{df_sect object}
+
+\item{el}{element for which to add a tooltip}
 }
 \value{
 a html icon with tooltip

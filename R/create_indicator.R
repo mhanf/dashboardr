@@ -20,7 +20,7 @@ create_indicator <- function(theme_var) {
       activecolor = theme_var$primary
     ),
     # margin
-    margin = list(l = 25, r = 30, t = 20, b = 5),
+    margin = list(l = 25, r = 35, t = 25, b = 5),
     # personalized font
     font = list(family = theme_var$`font-family-base`)
   )

@@ -62,6 +62,15 @@ mod_el_server <- function(id, df_graph, r = NULL, theme_var, default_pattern = "
       if (!is.na(df_graph$mod_server)) {
         eval(parse(text = df_graph$mod_server))
       }
+    }
+    # info box experimental
+    else if (df_graph$type[1] == "infobox") {
+      mod_infobox_server(
+        id = "infobox",
+        df_graph = df_graph,
+        r = r,
+        default_pattern = default_pattern
+      )
     } else if (df_graph$type[1] == "indicator") {
       output$indicator <- plotly::renderPlotly({
         # df associated indicator values
@@ -72,64 +81,13 @@ mod_el_server <- function(id, df_graph, r = NULL, theme_var, default_pattern = "
         )
         # create default indicator
         fig <- create_indicator(theme_var = theme_var)
-        # Indicator compilation
-        fig <- plotly::add_trace(
-          fig,
-          type = "indicator",
-          mode = "number+delta+gauge",
-          value = indic_val$indic_value,
-          number = list(
-            font = list(color = theme_var[[indic_val$indic_value_color]]),
-            prefix = "",
-            suffix = "$"
-          ),
-          # title = list(text = "Speed", font = list(size = 24)),
-          delta = list(
-            reference = 60,
-            position = "bottom",
-            relative = TRUE,
-            valueformat = ".0%", # ".1f",
-            increasing = list(color = theme_var$danger),
-            decreasing = list(color = theme_var$success)
-          ),
-          gauge = list(
-            axis = list(
-              range = list(0, 130),
-              tickfont = list(color = theme_var$`body-color`),
-              tickprefix = "",
-              ticksuffix = "$",
-              tickcolor = theme_var$`body-color`
-            ),
-            bar = list(color = theme_var$primary),
-            bgcolor = theme_var$light,
-            # borderwidth = 2,
-            bordercolor = theme_var$`body-color`,
-            steps = list(
-              list(range = c(0, 30), color = theme_var$success),
-              list(range = c(30, 50), color = theme_var$warning),
-              list(range = c(50, 70), color = theme_var$danger),
-              list(range = c(70, 100), color = theme_var$dark),
-              list(range = c(100, 130), color = theme_var$light)
-            ),
-            threshold = list(
-              line = list(color = "red", width = 4),
-              thickness = 0.75,
-              value = 80
-            )
-          )
+        # create indicator
+        fig <- compute_indicator(
+          fig = fig,
+          indic_val = indic_val,
+          theme_var = theme_var
         )
-        # fig <- fig |>
-        #   layout(
-        #     margin = list(l = 20, r = 35, t = 10, b = 5),
-        #     paper_bgcolor = "rgba(0, 0, 0, 0)",
-        #     plot_bgcolor = "rgba(0, 0, 0, 0)",
-        #     modebar = list(
-        #       bgcolor = "transparent",
-        #       color = theme_var$`body-color`,
-        #       activecolor = theme_var$primary
-        #     ),
-        #     font = list(color = theme_var$primary, family = theme_var$`font-family-base`))
-
+        # figure restitution
         fig
       })
     }

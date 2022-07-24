@@ -14,30 +14,21 @@ norm_df <- function(df, r) {
   # Construction of complete dataframe
   all_var <- c(
     # essential
-    "id", "type", "data", "row", "section",
+    extract_var_name()$essential,
     # row
-    "row_title",
-    "row_title_align",
-    "row_title_color",
+    extract_var_name()$row,
     # section
-    "sect_width", "sect_width_sm", "sect_width_md",
-    "sect_width_lg", "sect_width_xl", "sect_title",
-    "sect_footer", "sect_title_align", "sect_footer_align",
-    "sect_title_color", "sect_title_bgcolor", "sect_footer_bgcolor",
-    "sect_tlp_msg", "sect_tlp_color", "sect_tlp_position",
+    extract_var_name()$section,
     # nav
-    "nav_title", "nav_icon_name", "nav_icon_lib",
-    # el
-    "el_height",
+    extract_var_name()$nav,
+    # element
+    extract_var_name()$element,
     # indicator
-    "indic_value", "indic_value_color", "indic_value_prefix",
-    "indic_value_suffix", "indic_ref", "indic_ref_relative",
-    "indic_ref_invcolor", "indic_ref_format", "indic_ref_pos",
-    "indic_gauge_color", "indic_gauge_min", "indic_gauge_max",
-    "indic_gauge_step_val", "indic_gauge_step_color",
-    "indic_gauge_prefix", "indic_gauge_suffix",
+    extract_var_name()$indic,
+    # infobox
+    extract_var_name()$infobox,
     # module
-    "mod_ui", "mod_server",
+    extract_var_name()$module,
     # plot
     "x",
     "y"

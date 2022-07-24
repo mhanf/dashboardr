@@ -1,6 +1,7 @@
 
 # serveur
 server <- function(input, output, session) {
+
   r <- reactiveValues()
   r$mtcars <- mtcars
 

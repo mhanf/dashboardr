@@ -3,14 +3,13 @@ library(shiny)
 library(bslib)
 library(dashboardr)
 library(readxl)
-
 # dashboardr dataframe
-df <- read_excel("www/data_dashboardr.xlsx")
+df <- read_excel("www/data_boxvalue.xlsx")
 
 # theme
 theme <- bslib::bs_theme(
   version = 5,
-  bootswatch = "cerulean",
+  bootswatch = "cosmo",
 )
 
 # example module part ui

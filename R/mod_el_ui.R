@@ -58,6 +58,16 @@ mod_el_ui <- function(id, df_graph, r = NULL, default_pattern = "^%r%") {
       )
     }
   }
+  # infobox experimental
+  else if (df_graph$type[1] == "infobox") {
+    # module
+    tag <- mod_infobox_ui(
+      id = ns("infobox"),
+      df_graph = df_graph,
+      r = r,
+      default_pattern = default_pattern
+    )
+  }
   # indicator
   else if (df_graph$type[1] == "indicator") {
     tag <- plotly::plotlyOutput(

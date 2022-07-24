@@ -9,18 +9,25 @@
 card_ui <- function(body,
                     sect_val,
                     r = NULL) {
-
+  # card padding definition
+  if ("infobox" %in% sect_val$type) {
+    card_p <- 0
+  } else {
+    card_p <- 1
+  }
   # tooltip on card title
   intermed <- sect_val$sect_title
   if (is.na(intermed[1])) {
     intermed <- NULL
   }
-
-  if (!is.na(sect_val$sect_tlp_msg[1])) {
+  if (!is.na(sect_val$sect_tlp_msg[1]) & sect_val$type[1] != "infobox") {
     sect_title <- div(
       class = "row",
       div(class = sprintf("col-11 text-%s", sect_val$sect_title_align), intermed),
-      div(class = "col-1 text-end", add_tooltip(sect_val))
+      div(class = "col-1 text-end", add_tooltip(
+        df_sect = sect_val,
+        el = shiny::icon("question-circle")
+      ))
     )
   } else {
     sect_title <- sect_val$sect_title
@@ -56,7 +63,7 @@ card_ui <- function(body,
     class = "card shadow text-center border-0 h-100 m-0",
     sect_title,
     tags$div(
-      class = "card-body p-1 m-0",
+      class = sprintf("card-body h-100 p-%s m-0 position-relative", card_p),
       body
     ),
     sect_footer

@@ -16,7 +16,7 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
   # test df
   test_df(
     df = df,
-    check_var = c("id", "type", "data")
+    check_var = c("id", "type")
   )
   # normalize df
   df <- norm_df(df = df, r = r)

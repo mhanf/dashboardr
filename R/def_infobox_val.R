@@ -20,7 +20,6 @@ def_infobox_val <- function(df_graph, r = NULL, default_pattern = "^%r%") {
       infobox_val[[k]] <- NA
     }
   }
-
   # infobox_delta_relative transform
   infobox_val$infobox_delta_relative <- as.logical(infobox_val$infobox_delta_relative[1])
   if (is.na(infobox_val$infobox_delta_relative)) {
@@ -31,6 +30,61 @@ def_infobox_val <- function(df_graph, r = NULL, default_pattern = "^%r%") {
   if (is.na(infobox_val$infobox_delta_round)) {
     infobox_val$infobox_delta_round <- 0
   }
+  # infobox_title
+  infobox_val$infobox_title <- infobox_val$infobox_title[1]
+  if (is.na(infobox_val$infobox_title)) {
+    infobox_val$infobox_title <- ""
+  }
+  # infobox_bgcolor
+  infobox_val$infobox_bgcolor <- as.character(infobox_val$infobox_bgcolor)[1]
+  if (is.na(infobox_val$infobox_bgcolor[1])) {
+    infobox_val$infobox_bgcolor <- "body-color"
+  }
+  match.arg(
+    arg = infobox_val$infobox_bgcolor,
+    choices = extract_var_name()$color,
+    several.ok = FALSE
+  )
+  # infobox_icon_name
+  infobox_val$infobox_icon_name <- as.character(infobox_val$infobox_icon_name)[1]
+  if (is.na(infobox_val$infobox_icon_name[1])) {
+    infobox_val$infobox_icon_name <- NULL
+  }
+  # infobox_icon_lib
+  infobox_val$infobox_icon_lib <- as.character(infobox_val$infobox_icon_lib)[1]
+  if (is.na(infobox_val$infobox_icon_lib[1])) {
+    infobox_val$infobox_icon_lib <- "font-awesome"
+  }
+  match.arg(
+    arg = infobox_val$infobox_icon_lib,
+    choices = c("font-awesome", "glyphicon"),
+    several.ok = FALSE
+  )
+  # infobox_delta
+  infobox_val$infobox_delta <- as.logical(infobox_val$infobox_delta)[1]
+  if (is.na(infobox_val$infobox_delta)) {
+    infobox_val$infobox_delta <- TRUE
+  }
+  # tooltip color
+  infobox_val$sect_tlp_color <- as.character(infobox_val$sect_tlp_color[1])
+  if (is.na(infobox_val$sect_tlp_color)) {
+    infobox_val$sect_tlp_color <- "black"
+  }
+  match.arg(
+    arg = infobox_val$sect_tlp_color,
+    choices = extract_var_name()$color,
+    several.ok = FALSE
+  )
+  # tooltip position
+  infobox_val$sect_tlp_position <- as.character(infobox_val$sect_tlp_position[1])
+  if (is.na(infobox_val$sect_tlp_position)) {
+    infobox_val$sect_tlp_position <- "top"
+  }
+  match.arg(
+    arg = infobox_val$sect_tlp_position,
+    choices = c("top", "bottom", "left", "right"),
+    several.ok = FALSE
+  )
   # infobox_value & infobox_delta_value
   value_inter <- as.numeric(infobox_val$infobox_value)
   ref_inter <- as.numeric(infobox_val$infobox_delta_value)
@@ -55,7 +109,6 @@ def_infobox_val <- function(df_graph, r = NULL, default_pattern = "^%r%") {
       infobox_delta_icon <- "arrow-circle-up"
     }
   }
-  # value_inter <- as.character(value_inter)
   if (is.na(value_inter)) {
     value_inter <- "-"
   }

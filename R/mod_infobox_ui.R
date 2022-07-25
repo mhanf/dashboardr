@@ -11,7 +11,10 @@
 mod_infobox_ui <- function(id, df_graph, r = NULL, default_pattern = "^%r%") {
   ns <- shiny::NS(id)
   shiny::tagList(
-    shiny::uiOutput(ns("infobox"), class = "h-100 w-100 m-0 position-relative"),
+    shiny::uiOutput(
+      outputId = ns("infobox"),
+      class = "h-100 w-100 m-0 position-relative"
+    ),
     shiny::div(
       class = "card-title position-absolute top-0 end-0 m-2",
       if (!is.na(df_graph$sect_tlp_msg[1])) {

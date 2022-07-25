@@ -58,12 +58,14 @@ card_ui <- function(body,
   } else {
     sect_footer <- NULL
   }
+
   # card
   card <- tags$div(
     class = "card shadow text-center border-0 h-100 m-0",
     sect_title,
     tags$div(
-      class = sprintf("card-body h-100 p-%s m-0 position-relative", card_p),
+      class = sprintf("card-body h-100 p-%s m-0", card_p),
+      style = sprintf("min-height: %s;", sect_val$el_height), # to improve with height element
       body
     ),
     sect_footer

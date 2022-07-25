@@ -7,6 +7,7 @@ extract_var_name <- function() {
   essential <- c("id", "type", "data", "row", "section")
   # row
   row <- c(
+    "row_align",
     "row_title",
     "row_title_align",
     "row_title_color"
@@ -18,7 +19,7 @@ extract_var_name <- function() {
     "sect_width_lg", "sect_width_xl", "sect_title",
     "sect_footer", "sect_title_align", "sect_footer_align",
     "sect_title_color", "sect_title_bgcolor", "sect_footer_bgcolor",
-    "sect_tlp_msg", "sect_tlp_color", "sect_tlp_position"
+    "sect_tlp_msg", "sect_tlp_color", "sect_tlp_position", "el_height"
   )
   # nav
   nav <- c("nav_title", "nav_icon_name", "nav_icon_lib")
@@ -26,9 +27,10 @@ extract_var_name <- function() {
   element <- c("el_height")
   # infobox
   infobox <- c(
-    "infobox_title", "infobox_value", "infobox_delta_value", "infobox_delta_round",
-    "infobox_delta_relative", "infobox_bgcolor", "infobox_icon_name",
-    "infobox_icon_lib", "sect_tlp_msg", "sect_tlp_color", "sect_tlp_position"
+    "infobox_title", "infobox_value", "infobox_delta", "infobox_delta_value",
+    "infobox_delta_round", "infobox_delta_relative", "infobox_bgcolor",
+    "infobox_icon_name", "infobox_icon_lib", "sect_tlp_msg",
+    "sect_tlp_color", "sect_tlp_position"
   )
   # indicator
   indic <- c(

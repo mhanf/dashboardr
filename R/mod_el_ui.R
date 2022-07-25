@@ -35,7 +35,7 @@ mod_el_ui <- function(id, df_graph, r = NULL, default_pattern = "^%r%") {
     # table
     tag <- DT::dataTableOutput(ns("table"),
       width = "100%",
-      height = el_val$el_height
+      height = "auto"
     )
     # table css dependency
     table_dep <- htmltools::htmlDependency(
@@ -58,7 +58,7 @@ mod_el_ui <- function(id, df_graph, r = NULL, default_pattern = "^%r%") {
       )
     }
   }
-  # infobox experimental
+  # infobox
   else if (df_graph$type[1] == "infobox") {
     # module
     tag <- mod_infobox_ui(
@@ -66,6 +66,11 @@ mod_el_ui <- function(id, df_graph, r = NULL, default_pattern = "^%r%") {
       df_graph = df_graph,
       r = r,
       default_pattern = default_pattern
+    )
+    tag <- div(
+      tag,
+      class = "h-100 w-100 m-0 p-0",
+      style = sprintf("height: %s;", el_val$el_height)
     )
   }
   # indicator

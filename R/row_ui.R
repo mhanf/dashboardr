@@ -15,13 +15,18 @@ row_ui <- function(row, df_row, r, default_pattern) {
     r = r,
     default_pattern = default_pattern
   )
+  # row encapsulation
+  row <- shiny::div(
+    class = sprintf("row m-0 p-0 justify-content-%s", row_val$row_align),
+    row
+  )
   # row title
   if (!is.na(row_val$row_title[1])) {
     row <- shiny::tagList(
       shiny::h3(
         row_val$row_title,
         class = sprintf(
-          fmt = "%s text-%s m-0 pt-4 px-1 pb-2",
+          fmt = "text-%s text-%s m-0 pt-4 px-1 pb-2",
           row_val$row_title_color,
           row_val$row_title_align
         )
@@ -29,8 +34,6 @@ row_ui <- function(row, df_row, r, default_pattern) {
       row
     )
   }
-  # row encapsulation
-  row <- shiny::div(class = "row m-0 p-0", row)
   # return
   return(row)
 }

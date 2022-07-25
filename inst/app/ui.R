@@ -4,7 +4,7 @@ ui <- shiny::bootstrapPage(
   #waiter::autoWaiter(),
   actionButton("click", "Click"),
   div(
-    class = "row justify-content-center",
+    class = "d-flex justify-content-center",
     div(
       class = "col-12 col-md-11",
       # mod ui

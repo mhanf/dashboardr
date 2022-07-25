@@ -10,11 +10,11 @@
 #' @export
 
 add_tooltip <- function(df_sect, el = shiny::icon("question-circle")) {
-  # special case of black and white
-  tlp_color_css <- ifelse(df_sect$sect_tlp_color == "black" | df_sect$sect_tlp_color == "white",
-    df_sect$sect_tlp_color,
-    sprintf("var(--bs-%s)", df_sect$sect_tlp_color)
-  )
+  # # special case of black and white
+  # tlp_color_css <- ifelse(df_sect$sect_tlp_color == "black" | df_sect$sect_tlp_color == "white",
+  #   df_sect$sect_tlp_color,
+  #   sprintf("var(--bs-%s)", df_sect$sect_tlp_color)
+  # )
   # message
   title <- df_sect$sect_tlp_msg
   # placement

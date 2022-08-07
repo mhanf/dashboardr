@@ -4,24 +4,18 @@
 \alias{mod_infobox_server}
 \title{infobox server part}
 \usage{
-mod_infobox_server(
-  id,
-  df_graph,
-  r = NULL,
-  theme_var,
-  default_pattern = "^\%r\%"
-)
+mod_infobox_server(id, df, r = NULL, theme_var, pattern = "^\%r\%")
 }
 \arguments{
 \item{id}{module id}
 
-\item{df_graph}{A graph dashboarder dataframe}
+\item{df}{A graph dashboarder dataframe}
 
 \item{r}{r internal list (advanced use)}
 
 \item{theme_var}{bslib theme variables}
 
-\item{default_pattern}{default pattern to identify r code in dashboardr dataframe}
+\item{pattern}{default pattern to identify r code in dashboardr dataframe}
 }
 \value{
 an infobox server

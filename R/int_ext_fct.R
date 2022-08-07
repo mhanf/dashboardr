@@ -2,16 +2,16 @@
 #'
 #' @param x value
 #' @param r intern list of variables
-#' @param default_pattern default pattern to identify r code in dashboardr dataframe
+#' @param pattern default pattern to identify r code in dashboardr dataframe
 #' @return real value (internal or external)
 
-int_ext_fct <- function(x, r = NULL, default_pattern = "^%r%") {
+int_ext_fct <- function(x, r = NULL, pattern = "^%r%") {
   y <- as.character(x[1])
   # Evaluation of r code
-  if (grepl(default_pattern, y)) {
+  if (grepl(pattern, y)) {
     x <- tryCatch(
       {
-        value <- trimws(substr(y, nchar(default_pattern), 100000)[1])
+        value <- trimws(substr(y, nchar(pattern), 100000)[1])
         value <- eval(parse(text = value))
         return(value)
       },

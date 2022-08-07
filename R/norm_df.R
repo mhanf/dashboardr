@@ -1,48 +1,18 @@
-#' Function to normalize a dashboardr dataframe
-#'
-#' @param r r internal list (advanced use)
-#' @param df A dashboardr dataframe
-#'
-#' @return A normalized dashboardr dataframe
-#' @export
 
-norm_df <- function(df, r) {
-
+norm_df <- function(df, grp_var = "ui") {
   # Data frame formatting
   df <- as.data.frame(df, stringsAsFactors = FALSE)
   df$order <- 1:dim(df)[1]
-  # Construction of complete dataframe
-  all_var <- c(
-    # essential
-    extract_var_name()$essential,
-    # row
-    extract_var_name()$row,
-    # section
-    extract_var_name()$section,
-    # nav
-    extract_var_name()$nav,
-    # element
-    extract_var_name()$element,
-    # indicator
-    extract_var_name()$indic,
-    # infobox
-    extract_var_name()$infobox,
-    # module
-    extract_var_name()$module,
-    # plot
-    "x",
-    "y"
-  )
+  # build of complete dataframe
+  grp_var <- extract_var_name()[[grp_var]]
   # default value
   unique_id <- unique(df$id)
   default_df <- data.frame("id" = unique_id, stringsAsFactors = FALSE)
-  for (k in all_var) {
+  for (k in grp_var) {
     default_df[, k] <- NA
   }
-  default_df$row <- 1:dim(default_df)[1]
-  default_df$section <- 1
   # keep absent columns
-  var_keep <- c("id", all_var[!all_var %in% colnames(df)])
+  var_keep <- c("id", grp_var[!grp_var %in% colnames(df)])
   # merging
   if (length(var_keep) != 1) {
     default_df <- default_df[, var_keep]

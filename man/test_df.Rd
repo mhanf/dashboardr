@@ -4,14 +4,10 @@
 \alias{test_df}
 \title{Test the conformity of necessary variables in dashboardr dataframe}
 \usage{
-test_df(df, r = NULL, check_var)
+test_df(df)
 }
 \arguments{
 \item{df}{Dashboardr dataframe}
-
-\item{r}{r internal value}
-
-\item{check_var}{Vector of variables to test}
 }
 \value{
 several error messages (if any)

@@ -4,14 +4,14 @@
 \alias{int_ext_fct}
 \title{Identify and compute internal/external graph characteristics}
 \usage{
-int_ext_fct(x, r = NULL, default_pattern = "^\%r\%")
+int_ext_fct(x, r = NULL, pattern = "^\%r\%")
 }
 \arguments{
 \item{x}{value}
 
 \item{r}{intern list of variables}
 
-\item{default_pattern}{default pattern to identify r code in dashboardr dataframe}
+\item{pattern}{default pattern to identify r code in dashboardr dataframe}
 }
 \value{
 real value (internal or external)

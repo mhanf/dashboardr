@@ -65,7 +65,7 @@ mod_dashboardr_ui <- function(id, df, r = NULL, default_pattern = "^%r%") {
       if (length(unique(df_sect$id)) > 1) {
         section <- bslib::navs_tab(!!!section)
       }
-      # card encapsulation
+      #card encapsulation
       section <- card_ui(
         body = section,
         sect_val = sect_val,

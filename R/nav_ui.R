@@ -26,7 +26,8 @@ nav_ui <- function(graph, df_sect, df_graph, r, default_pattern) {
           name = nav_val$nav_icon_name,
           lib = nav_val$nav_icon_lib
         ),
-        graph
+        graph,
+        div(nav_val$nav_title,class = "text-danger")
       )
     )$
       addClass("pt-1 align-items-center w-100 h-100")$

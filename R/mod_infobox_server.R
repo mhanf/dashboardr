@@ -19,6 +19,7 @@ mod_infobox_server <- function(id, df_graph, r = NULL, theme_var, default_patter
         r = r,
         default_pattern = default_pattern
       )
+
       # tag computation
       shiny::tagList(
         card <- shiny::div(
@@ -39,14 +40,23 @@ mod_infobox_server <- function(id, df_graph, r = NULL, theme_var, default_patter
           # value
           shiny::div(
             class = "card-title position-absolute bottom-0 start-0 m-2",
-            shiny::h3(infobox_val$infobox_value, class = "m-0 p-0 text-start"),
+            shiny::h3(
+              paste0(
+                infobox_val$infobox_value,
+                infobox_val$infobox_value_suffix
+                ),
+              class = "m-0 p-0 text-start"
+              ),
             if (infobox_val$infobox_delta == TRUE) {
               shiny::p(
                 shiny::icon(
                   name = infobox_val$infobox_delta_icon,
                   class = "m-0 p-0 text-start"
                 ),
-                infobox_val$infobox_delta_value,
+                paste0(
+                  infobox_val$infobox_delta_value,
+                  infobox_val$infobox_delta_suffix
+                  ),
                 class = "m-0 p-0 text-start"
               )
             } else {

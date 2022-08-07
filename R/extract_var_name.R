@@ -29,8 +29,9 @@ extract_var_name <- function() {
   infobox <- c(
     "infobox_title", "infobox_value", "infobox_delta", "infobox_delta_value",
     "infobox_delta_round", "infobox_delta_relative", "infobox_bgcolor",
-    "infobox_icon_name", "infobox_icon_lib", "sect_tlp_msg",
-    "sect_tlp_color", "sect_tlp_position"
+    "infobox_icon_name", "infobox_icon_lib", "infobox_value_suffix",
+    "infobox_delta_suffix","sect_tlp_msg", "sect_tlp_color",
+    "sect_tlp_position"
   )
   # indicator
   indic <- c(

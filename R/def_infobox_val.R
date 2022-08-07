@@ -85,6 +85,17 @@ def_infobox_val <- function(df_graph, r = NULL, default_pattern = "^%r%") {
     choices = c("top", "bottom", "left", "right"),
     several.ok = FALSE
   )
+  # infobox_value_suffix
+  infobox_val$infobox_value_suffix <- as.character(infobox_val$infobox_value_suffix[1])
+  if (is.na(infobox_val$infobox_value_suffix)) {
+    infobox_val$infobox_value_suffix <- ""
+  }
+
+  # infobox_delta_suffix
+  infobox_val$infobox_delta_suffix <- as.character(infobox_val$infobox_delta_suffix[1])
+  if (is.na(infobox_val$infobox_delta_suffix)) {
+    infobox_val$infobox_delta_suffix <- ""
+  }
   # infobox_value & infobox_delta_value
   value_inter <- as.numeric(infobox_val$infobox_value)
   ref_inter <- as.numeric(infobox_val$infobox_delta_value)
